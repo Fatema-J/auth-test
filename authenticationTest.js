@@ -19,7 +19,25 @@ test('SignUp The User, SignOut and SignIn Test', async (t) => {
   await t.expect(page.addContact.exists).ok()
 })
 
-test.only('Signing in with Unregistered User', async (t) => {
+test.only('Signing Up with Already Registered User', async (t) => {
+  await page.SignUp('Sara', 'Khalid', 'Sara12300@gmail.com', '12345678')
+  await t
+    .expect(Selector('#error').innerText)
+    .contains('Email address is already in use')
+})
+
+test.only('Signing Up without Password', async (t) => {
+  await t
+    .click('#signup')
+    .typeText('#firstName', 'Sara')
+    .typeText('#lastName', 'Khalid')
+    .typeText('#email', 'Sara12300@gmail.com')
+    .click('#submit')
+    .expect(Selector('#error').innerText)
+    .contains('User validation failed: password: Path `password` is required.')
+})
+
+test.only('Signing In with Unregistered User', async (t) => {
   await page.SignIn('delmonia@gmail.com', '0987654321')
   await t
     .expect(Selector('#error').innerText)
