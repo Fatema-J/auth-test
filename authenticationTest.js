@@ -1,4 +1,4 @@
-import { Selector } from 'testcafe'
+import page from './authenticationPageModel'
 
 // source: https://testcafe.io/documentation/402831/guides/basic-guides/test-structure
 // Fixtures are groups of tests that share the same starting URL.
@@ -8,6 +8,7 @@ fixture`Test structure`
 
 // first arg is the name of the test
 test('SignUp The User, SignOut and SignIn Test', async (t) => {
+
   // Sign up process
   await t
     .click('#signup')
@@ -16,7 +17,7 @@ test('SignUp The User, SignOut and SignIn Test', async (t) => {
     .typeText('#email', 'Sara12300@gmail.com')
     .typeText('#password', '12345678')
     .click('#submit')
-    .expect(Selector('#add-contact').exists)
+    .expect(page.addContact.exists)
     .ok()
 
   // Sign out then Sign in
@@ -25,6 +26,6 @@ test('SignUp The User, SignOut and SignIn Test', async (t) => {
     .typeText('#email', 'Sara12300@gmail.com')
     .typeText('#password', '12345678')
     .click('#submit')
-    .expect(Selector('#add-contact').exists)
+    .expect(page.addContact.exists)
     .ok()
 })
