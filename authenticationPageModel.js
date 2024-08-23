@@ -3,6 +3,7 @@ import { Selector, t } from 'testcafe'
 class Page {
   constructor() {
     this.addContact = Selector('#add-contact')
+    this.contactsTable = Selector('#myTable')
   }
 
   async SignIn(email, password) {

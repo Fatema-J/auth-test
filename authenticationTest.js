@@ -11,22 +11,22 @@ fixture`Test structure`
 test('SignUp The User, SignOut and SignIn Test', async (t) => {
   // Sign up process
   await page.SignUp('Sara', 'Khalid', 'Sara12300@gmail.com', '12345678')
-  await t.expect(page.addContact.exists).ok()
+  await t.expect(page.contactsTable.exists).ok()
 
   // Sign out then Sign in
   await t.click('#logout')
   await page.SignIn('Sara12300@gmail.com', '12345678')
-  await t.expect(page.addContact.exists).ok()
+  await t.expect(page.contactsTable.exists).ok()
 })
 
-test.only('Signing Up with Already Registered User', async (t) => {
+test.only('Signing Up with Already Registered User Test', async (t) => {
   await page.SignUp('Sara', 'Khalid', 'Sara12300@gmail.com', '12345678')
   await t
     .expect(Selector('#error').innerText)
     .contains('Email address is already in use')
 })
 
-test.only('Signing Up without Password', async (t) => {
+test.only('Signing Up without Password Test', async (t) => {
   await t
     .click('#signup')
     .typeText('#firstName', 'Sara')
@@ -37,7 +37,7 @@ test.only('Signing Up without Password', async (t) => {
     .contains('User validation failed: password: Path `password` is required.')
 })
 
-test.only('Signing In with Unregistered User', async (t) => {
+test.only('Signing In with Unregistered User Test', async (t) => {
   await page.SignIn('delmonia@gmail.com', '0987654321')
   await t
     .expect(Selector('#error').innerText)
