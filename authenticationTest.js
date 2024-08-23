@@ -8,7 +8,6 @@ fixture`Test structure`
 
 // first arg is the name of the test
 test('SignUp The User, SignOut and SignIn Test', async (t) => {
-
   // Sign up process
   await t
     .click('#signup')
@@ -21,11 +20,7 @@ test('SignUp The User, SignOut and SignIn Test', async (t) => {
     .ok()
 
   // Sign out then Sign in
-  await t
-    .click('#logout')
-    .typeText('#email', 'Sara12300@gmail.com')
-    .typeText('#password', '12345678')
-    .click('#submit')
-    .expect(page.addContact.exists)
-    .ok()
+  await t.click('#logout')
+  await page.SignIn('Sara12300@gmail.com', '12345678')
+  await t.expect(page.addContact.exists).ok()
 })
