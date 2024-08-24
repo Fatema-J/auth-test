@@ -4,7 +4,7 @@ import page from './authenticationPageModel'
 fixture`Test structure`
   .page`https://thinking-tester-contact-list.herokuapp.com/`
 
-const email = 'tylos404@gmail.com'
+const email = 'tylos505@gmail.com'
 const password = '12345678'
 const contactFirstName = 'Shams'
 const contactLastName = 'Ghaim'
