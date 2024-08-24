@@ -22,6 +22,10 @@ class Page {
       .typeText('#password', password)
       .click('#submit')
   }
+
+  async Submit() {
+    await t.click('#submit')
+  }
 }
 
 export default new Page()
